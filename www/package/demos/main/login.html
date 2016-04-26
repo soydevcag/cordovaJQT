@@ -19,7 +19,20 @@
         <script src="../../extensions/jqt.themeswitcher.min.js" type="application/x-javascript" charset="utf-8"></script>
         <script src="../../extensions/jqt.actionsheet.min.js" type="application/x-javascript" charset="utf-8"></script>
         <script src="../../extensions/jqt.menusheet.min.js" type="application/x-javascript" charset="utf-8"></script>
-
+        <script type="text/javascript" src="../../../cordova.js"></script>
+            <script type="text/javascript" charset="utf-8">
+                function onDeviceReady(){
+                    document.addEventListener("backbutton", function(e){
+                        if(window.location.hash=='#home'){
+                            e.preventDefault();
+                            navigator.app.exitApp();
+                        } else {
+                            navigator.app.backHistory()
+                        }
+                    }, false);
+                }
+                document.addEventListener("deviceready", onDeviceReady, false);
+            </script>
         <script type="text/javascript" charset="utf-8">
             var jQT = new $.jQT({
                 icon: 'jqtouch.png',
@@ -92,8 +105,14 @@
 </head>
 <body>
 	<div class="container">
-		<div class="toolbar row animated tada infinite">
+		<div class="toolbar row animated tada">
             <h1>Login</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center animated jello infinite">
+                <br>
+                <img src="jqtouch.png" alt="Logo">
+            </div>
         </div>
 		<div class="row">
 			 <form class="scroll animated swing">
